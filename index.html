@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>BREACK CASINO - RÈGLES & PROBABILITÉS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Barlow+Condensed:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #f1c40f;
+      --dark-gold: #b7950b;
+      --danger: #e74c3c;
+      --neon-purple: #bc13fe;
+      --nt-cyan: #00E5FF;
+      --nt-pink: #FF2D6F;
+      --nt-green: #30FF7A;
+      --bg-dark: #0a0a0a;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg-dark);
+      background: radial-gradient(circle at center, #151a24 0%, #000000 100%);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #e0e0e0;
+      padding: 40px 20px;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: rgba(10, 10, 10, 0.9);
+      padding: 40px;
+      border-radius: 20px;
+      border: 2px solid var(--gold);
+      box-shadow: 0 0 40px rgba(241, 196, 15, 0.15);
+      backdrop-filter: blur(10px);
+    }
+
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      text-align: center;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      margin-bottom: 10px;
+      text-shadow: 0 0 20px rgba(241, 196, 15, 0.5);
+      font-size: 2.3rem;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-family: 'Barlow Condensed', sans-serif;
+      color: #888;
+      font-size: 1.2em;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 40px;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 30px;
+      color: var(--gold);
+      text-decoration: none;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: bold;
+      font-size: 0.9em;
+      border: 1px solid var(--gold);
+      padding: 10px 20px;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+      box-shadow: inset 0 0 5px rgba(241, 196, 15, 0.2);
+    }
+
+    .back-link:hover {
+      background: var(--gold);
+      color: black;
+      box-shadow: 0 0 15px var(--gold);
+      transform: translateY(-2px);
+    }
+
+    .game-info {
+      margin-bottom: 50px;
+      padding-bottom: 35px;
+      border-bottom: 1px solid rgba(241, 196, 15, 0.15);
+    }
+
+    .game-info:last-of-type {
+      border-bottom: none;
+    }
+
+    h2 {
+      font-family: 'Orbitron', sans-serif;
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      border-left: 4px solid var(--gold);
+      padding-left: 15px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 1.5rem;
+      text-shadow: 0 0 10px rgba(241, 196, 15, 0.2);
+    }
+
+    .mechanics-p {
+      color: #cccccc;
+      font-size: 1.05rem;
+      margin-bottom: 15px;
+    }
+
+    .multiplier-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+      background: rgba(255, 255, 255, 0.01);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .multiplier-table td, .multiplier-table th {
+      padding: 12px 15px;
+      border: 1px solid rgba(241, 196, 15, 0.08);
+      text-align: left;
+    }
+
+    .multiplier-table th {
+      background: rgba(241, 196, 15, 0.06);
+      color: var(--gold);
+      text-transform: uppercase;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.85em;
+      letter-spacing: 1px;
+    }
+
+    .multiplier-table tr:hover {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .badge-chance {
+      background: rgba(0, 229, 255, 0.12);
+      color: var(--nt-cyan);
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 0.85em;
+      font-weight: bold;
+      border: 1px solid rgba(0, 229, 255, 0.25);
+    }
+
+    .badge-danger {
+      background: rgba(231, 76, 60, 0.12);
+      color: var(--danger);
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 0.85em;
+      font-weight: bold;
+      border: 1px solid rgba(231, 76, 60, 0.25);
+    }
+
+    .badge-combo {
+      background: rgba(188, 19, 254, 0.15);
+      color: var(--neon-purple);
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 0.85em;
+      font-weight: bold;
+      border: 1px solid rgba(188, 19, 254, 0.3);
+    }
+
+    ul {
+      padding-left: 20px;
+      margin: 10px 0;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    strong { 
+      color: var(--gold); 
+    }
+
+    .highlight-cyan { color: var(--nt-cyan); font-weight: bold; }
+    .highlight-pink { color: var(--nt-pink); font-weight: bold; }
+    .highlight-green { color: var(--nt-green); font-weight: bold; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  
+  <h1>📜 INFOS & STATISTIQUES</h1>
+  <div class="subtitle">Analyse complète des probabilité et informations du casino</div>
+
+  <div class="game-info">
+    <h2>🔞 Slots Hard</h2>
+    <p class="mechanics-p">Une machine à 3 rouleaux tirant parmi 13 symboles.</p>
+    <ul>
+      <li><strong>Mise requise :</strong> Fixe à <strong>150€</strong> par spin.</li>
+      <li><strong>Mécanique de Combo :</strong> Chaque victoire consécutive multiplie le gain de la ligne par le niveau de combo actuel, puis augmente le combo de +1. Une défaite réinitialise instantanément le multiplicateur de combo à x1.</li>
+    </ul>
+    <table class="multiplier-table">
+      <tr>
+        <th>Combinaison Obtenue</th>
+        <th>Gain de Base</th>
+        <th>Pourcentage de Chances</th>
+      </tr>
+      <tr>
+        <td><strong>3x Sept Rouges 7️⃣7️⃣7️⃣</strong></td>
+        <td><span class="highlight-pink">7 777€</span></td>
+        <td>Chance de hit : <span class="badge-danger">0,045% (1 / 2 197)</span></td>
+      </tr>
+      <tr>
+        <td><strong>3x Diamants 💎💎💎</strong></td>
+        <td><span class="highlight-cyan">6 666€</span></td>
+        <td>Chance de hit : <span class="badge-danger">0,045% (1 / 2 197)</span></td>
+      </tr>
+      <tr>
+        <td><strong>3x Jokers 🃏🃏🃏</strong></td>
+        <td><span class="highlight-green">2 000€</span></td>
+        <td><strong>Bonus Caché :</strong> multiplicateur de Combo <span class="badge-combo">x10</span>. Chance de hit : <span class="badge-danger">0,045%</span></td>
+      </tr>
+      <tr>
+        <td><strong>3x Tout autre symbole identique</strong></td>
+        <td><strong>2 500€</strong></td>
+        <td>Tous les autres trios (ex: 3x ⚔️ ou 3x 💣) Chance de hit : <span class="badge-chance">0,455%</span></td>
+      </tr>
+      <tr>
+        <td><strong>2 Symboles identiques alignés</strong></td>
+        <td><strong>450€ </strong></td>
+        <td>Chance de hit : <span class="badge-chance">24,96%</span></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="game-info">
+    <h2>7️⃣7️⃣7️⃣ Slots VIP</h2>
+    <p class="mechanics-p">Une machine exclusive configurée en grille de 4/2 lignes. </p>
+    <ul>
+      <li><strong>Mise requise :</strong> Fixe à <strong>100€</strong> par spin.</li>
+      <li><strong>Mécanique de Combo :</strong> Chaque victoire consécutive augmente votre multiplicateur de +1. Un spin perdant réinitialise le combo à x1.</li>
+    </ul>
+    <table class="multiplier-table">
+      <tr>
+        <th>Type de Configuration</th>
+        <th>Gain Multiplié</th>
+        <th>Pourcentage de Chances</th>
+      </tr>
+      <tr>
+        <td><strong>Plein Écran de 7️⃣ (8 symboles)</strong></td>
+        <td><span class="highlight-pink">5 000€ (Mise x50)</span></td>
+        <td>Chance de hit: <span class="badge-danger">~1,00%</span></td>
+      </tr>
+      <tr>
+        <td><strong>Plein Écran de 💎 (8 symboles)</strong></td>
+        <td><span class="highlight-cyan">2 500€ (Mise x25)</span></td>
+        <td>Chance de hit: <span class="badge-danger">~1,30%</span></td>
+      </tr>
+      <tr>
+        <td><strong>Plein Écran de 🏴‍☠️ (8 symboles)</strong></td>
+        <td><span class="highlight-green">2 500€ (Mise x25)</span></td>
+        <td>Chance de hit : <span class="badge-danger">&lt; 0,01%</span></td>
+      </tr>
+      <tr>
+        <td><strong>Ligne de 4 symboles identiques</strong></td>
+        <td><strong>1 000€ (Mise x10)</strong></td>
+        <td>Chance : <span class="badge-chance">~3,20%</span></td>
+      </tr>
+      <tr>
+        <td><strong>Ligne de 3 symboles identiques</strong></td>
+        <td><strong>300€ (Mise x3)</strong></td>
+        <td>Chance : <span class="badge-chance">~18,50%</span></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="game-info">
+    <h2>🎡 Roulette Européenne</h2>
+    <p class="mechanics-p">Fidèle reproduction Roulette Européenne </p>
+    <ul>
+      <li><strong>Mise minimale :</strong> 10€.</li>
+      <li><strong>Zéro Vert 🟢 :</strong> Représente l'avantage mathématique absolu (2,70%).</li>
+    </ul>
+    <table class="multiplier-table">
+      <tr>
+        <th>Type de Pari</th>
+        <th>Rapport de Paiement</th>
+        <th>Chances Mathématiques Réelles</th>
+      </tr>
+      <tr>
+        <td><strong>Couleurs (Rouge / Noir)</strong></td>
+        <td><strong>x2</strong> (Mise doublée)</td>
+        <td>18 numéros gagnants sur 37. Probabilité : <span class="badge-chance">48,64%</span></td>
+      </tr>
+      <tr>
+        <td><strong>Numéro Plein Unique (0 à 36)</strong></td>
+        <td><span class="highlight-pink">x36</span></td>
+        <td>1 seul numéro gagnant sur 37. Probabilité : <span class="badge-chance">2,70%</span></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="game-info">
+    <h2>🎰 Slots</h2>
+    <p class="mechanics-p">Machine classique à 3 rouleaux tirant parmi une liste de 7 symbole. Une partie des fonds perdus alimente directement la cagnotte globale.</p>
+    <ul>
+      <li><strong>Mise requise :</strong> Fixe à <strong>50€</strong> par tirage.</li>
+      <li><strong>Mode Auto :</strong> Relance automatiquement un spin</li>
+      <li><strong>Taxe Jackpot :</strong> Chaque spin perdant <strong>+10€</strong> dans le Jackpot</li>
+    </ul>
+    <table class="multiplier-table">
+      <tr>
+        <th>Combinaison</th>
+        <th>Gain Distribué</th>
+        <th>Chances Statistiques</th>
+      </tr>
+      <tr>
+        <td><strong>3x Piraterie 🏴‍☠️🏴‍☠️🏴‍☠️</strong></td>
+        <td><span class="highlight-pink">2 000€</span></td>
+        <td>Chance de hit : <span class="badge-danger">0,29% (1 / 343)</span></td>
+      </tr>
+      <tr>
+        <td><strong>3x Autres symboles identiques</strong></td>
+        <td><strong>500€</strong></td>
+        <td>Chance de hit : <span class="badge-chance">1,75%</span></td>
+      </tr>
+      <tr>
+        <td><strong>Duo (2 symboles identiques)</strong></td>
+        <td><strong>200€</strong></td>
+        <td>Chance élevée de hit : <span class="badge-chance">38,19%</span></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="game-info">
+    <h2>🎲 Somme Dés</h2>
+    <p class="mechanics-p">Jeu de prédiction statistique basé sur la somme de deux dés classiques </p>
+    <table class="multiplier-table">
+      <tr>
+        <th>Option de Pari</th>
+        <th>Paiement</th>
+        <th>Combinaisons Possibles & Chances Réelles</th>
+      </tr>
+      <tr>
+        <td><strong>Petit (Somme de 2 à 6)</strong></td>
+        <td><strong>x2</strong></td>
+        <td>Chance : <span class="badge-chance">41,66%</span></td>
+      </tr>
+      <tr>
+        <td><strong>Grand (Somme de 8 à 12)</strong></td>
+        <td><strong>x2</strong></td>
+        <td>Chance : <span class="badge-chance">41,66%</span></td>
+      </tr>
+      <tr>
+        <td><strong>Le Sept Fort (Somme = 7)</strong></td>
+        <td><span class="highlight-pink">x5</span></td>
+        <td>Chance : <span class="badge-chance">16,66%</span></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="game-info">
+    <h2>🎲🎲 3 Dés Simple</h2>
+    <p class="mechanics-p">Calcul basé sur l'addition finale de trois dés lancés simultanément. Le score total détermine le statut pair/impair, avec une option bonus sur les configurations identiques.</p>
+    <ul>
+      <li><strong>Mise minimale :</strong> 10€.</li>
+    </ul>
+    <table class="multiplier-table">
+      <tr>
+        <th>Pari Sélectionné</th>
+        <th>Multiplicateur</th>
+        <th>Chances Mathématiques Réelles</th>
+      </tr>
+      <tr>
+        <td><strong>Pair / Impair</strong></td>
+        <td><strong>x2</strong></td>
+        <td>Déterminé par la somme des 3 dés (`somme % 2 === 0`). Équilibre parfait. Chance : <span class="badge-chance">50,00%</span></td>
+      </tr>
+      <tr>
+        <td><strong>Triple Bonus 🪙</strong></td>
+        <td><span class="highlight-pink">x10</span></td>
+        <td><strong>Condition :</strong> 3 chiffre identiques Chance de hit théorique : <span class="badge-chance">~ 19.29%</span>.</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="game-info">
+    <h2>🪙 Pile ou Face</h2>
+    <p class="mechanics-p">Le duel de probabilité le plus pur du casino. Une pièce équilibrée est projetée</p>
+    <ul>
+      <li><strong>Mise minimale :</strong> 10€.</li>
+      <li><strong>Symboles visuels :</strong> La pile est représentée par une pile 🔋, la face par un totem 🗿.</li>
+      <li><strong>Chances de gain :</strong> Hasard parfait, Chance : <span class="badge-chance">50,00%</span>. Rendement : <strong>x2 la mise</strong>.</li>
+    </ul>
+  </div>
+
+  <div class="game-info">
+    <h2>💣 Mines</h2>
+    <p class="mechanics-p">25 cases masquées cachant le nombre exact de mines de votre choix (1 à 24). Le multiplicateur grimpe après chaque diamant découvert.</p>
+    <ul>
+      <li><strong>Règle de sortie :</strong> Vous pouvez cliquer sur "Encaisser" à tout moment, ou le jeu valide automatiquement vos gains si vous découvrez l'intégralité des diamants.</li>
+    </ul>
+  </div>
+
+  <div class="game-info">
+    <h2>🚀 Rocket Crash</h2>
+    <p class="mechanics-p">Un jeu de courbe multiplicatrice en temps réel où une fusée décolle de x1.00 jusqu'à son explosion fatale.</p>
+    <ul>
+      <li><strong>L'algorithme de Crash :</strong> Le point d'explosion est généré de manière totalement aléatoire</li>
+      <li><strong>Le Seuil Maximum Caché :</strong> La fusée est codée pour exploser avant<span class="badge-danger">x6.00</span>. Il est impossible d'aller au-delà.</li>
+      <li><strong>Vitesse de montée :</strong> Le multiplicateur augmente de <strong>+0.03x toutes les 50 millisecondes</strong>.</li>
+    </ul>
+  </div>
+
+  <div class="game-info">
+    <h2>🏇 Course Hippique</h2>
+    <p class="mechanics-p">Une course opposant 4 chevaux de courses: Cheval 🐎, Licorne 🦄, Zèbre 🦓 et Chameau 🐫.</p>
+    <ul>
+      <li><strong>Équité absolue :</strong> Aucun animal n'a d'avantage natif. Ils possèdent tous exactement les mêmes chances de victoire : <span class="badge-chance">25,00%</span>.</li>
+      <li><strong>Rapport :</strong> si gagnants paiement fixe de <span class="highlight-green">x4 la mise</span>.</li>
+    </ul>
+  </div>
+
+  <div class="game-info">
+    <h2>✊✋✌️ Shifumi (Duel)</h2>
+    <p class="mechanics-p">Affrontez le bot dans un combat classique en trois choix (Pierre, Feuille, Ciseaux).</p>
+    <ul>
+      <li><strong>Bot :</strong> Le robot ne triche pas et choisit sa figure de manière aléatoire</li>
+      <li><strong>Chances de :</strong> Victoire (33,33%), Égalité (33,33%), Défaite (33,33%).</li>
+      <li><strong>Rapports financiers :</strong> Une égalité vous rembourse entièrement. Une victoire contre le bot vous offre <span class="highlight-green">x2.5 la mise</span>.</li>
+    </ul>
+  </div>
+
+  <div class="game-info">
+    <h2>🎁 Jeu des Coffres</h2>
+    <p class="mechanics-p">Un jeu de bonneteau moderne où un unique diamant 💎 est dissimulé parmi un groupe de 2 à 10 coffres mélangés.</p>
+    <ul>
+      <li><strong>Mise minimale :</strong> 10€.</li>
+      <li><strong>Algorithme du multiplicateur dynamique :</strong> Le gain s'adapte au risque réel configuré par le joueur :</li>
+    </ul>
+    <table class="multiplier-table">
+      <tr>
+        <th>Nombre de coffres configurés</th>
+        <th>Multiplicateur exact appliqué</th>
+        <th>Chances réelles de réussite</th>
+      </tr>
+      <tr>
+        <td><strong>2 Coffres</strong></td>
+        <td><span class="highlight-green">x2.00</span></td>
+        <td><span class="badge-chance">50,00%</span></td>
+      </tr>
+      <tr>
+        <td><strong>3 Coffres à 10 Coffres</strong></td>
+        <td>Calcul : `Nombre de coffres * 0.95`</td>
+        <td>Exemple pour 10 coffres : <span class="highlight-pink">x9.50</span>. Chance : <span class="badge-danger">10,00%</span></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="game-info">
+    <h2>⛏️ Jeu du Mineur</h2>
+    <p class="mechanics-p">Le jeu d'excavation ultime sur une ligne de 10 blocs de roche 🪨. Chaque action déclenche une série de trois tirages aléatoires successifs indépendants.</p>
+    <ul>
+      <li><strong>Mise minimale :</strong> 10€.</li>
+    </ul>
+    <table class="multiplier-table">
+      <tr>
+        <th>Événement déclenché lors du minage</th>
+        <th>Conséquence sur la mise</th>
+        <th>Probabilité algorithmique exacte</th>
+      </tr>
+      <tr>
+        <td><strong>Présence d'un Diamant Caché 💎</strong></td>
+        <td><span class="highlight-pink">Bonus Légendaire de +x10</span> s'ajoutant directement à la fin.</td>
+        <td><strong>Tirage prioritaire indépendant :</strong> <span class="badge-chance">3,00%</span> de chance d'apparaître sur n'importe quel bloc.</td>
+      </tr>
+      <tr>
+        <td><strong>Filon de minerais étincelant ✨</strong></td>
+        <td>Le multiplicateur de base augmente de <strong>+1.00x</strong>.</td>
+        <td>Calculé si aucun diamant n'est sorti. Une chance sur trois : <span class="badge-chance">33,33%</span>.</td>
+      </tr>
+      <tr>
+        <td><strong>Terre stérile ou vide 🕳️</strong></td>
+        <td>Aucune augmentation, le jeu continue en toute sécurité.</td>
+        <td>Une chance sur trois : <span class="badge-chance">33,33%</span>.</td>
+      </tr>
+      <tr>
+        <td><strong>Déclenchement d'une Bombe TNT 💥</strong></td>
+        <td><span class="badge-danger">Explosion totale :</span> Perte instantanée de la mise.</td>
+        <td>Une chance sur trois : <span class="badge-danger">33,33%</span>.</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="game-info">
+    <h2>🃏 Poker d'Images</h2>
+    <p class="mechanics-p">Une variante simplifiée à 5 cartes où le joueur affronte la main masquée du croupier à l'aide de symboles uniques tirés à chaque donne.</p>
+    <ul>
+      <li><strong>Mise minimale :</strong> 10€.</li>
+      <li><strong>Mécanique de jeu :</strong> 5 cartes sont d'abord distribuées. Vous sélectionnez les cartes à conserver ("Hold") puis relancez le tirage pour remplacer les autres avant l'abattage final.</li>
+    </ul>
+    <table class="multiplier-table">
+      <tr>
+        <th>Combinaison Validée</th>
+        <th>Multiplicateur de Gain Brut</th>
+        <th>Description de l'Évaluation</th>
+      </tr>
+      <tr>
+        <td><strong>5 Identiques (Cinq de suite)</strong></td>
+        <td><span class="highlight-pink">x10</span></td>
+        <td>Les 5 cartes de la main affichent strictement le même symbole.</td>
+      </tr>
+      <tr>
+        <td><strong>Carré</strong></td>
+        <td><span class="highlight-cyan">x8</span></td>
+        <td>4 symboles identiques parmi les 5 cartes.</td>
+      </tr>
+      <tr>
+        <td><strong>Full</strong></td>
+        <td><span class="highlight-green">x6</span></td>
+        <td>Un Brelan (3 identiques) combiné à une Paire (2 identiques).</td>
+      </tr>
+      <tr>
+        <td><strong>Brelan</strong></td>
+        <td><strong>x4</strong></td>
+        <td>3 symboles identiques uniques.</td>
+      </tr>
+      <tr>
+        <td><strong>Double Paire</strong></td>
+        <td><strong>x3</strong></td>
+        <td>Deux paires de symboles différents distinctes dans la main.</td>
+      </tr>
+      <tr>
+        <td><strong>Paire Simple</strong></td>
+        <td><strong>x2</strong></td>
+        <td>Deux symboles identiques. Combinaison minimale pour se qualifier.</td>
+      </tr>
+      <tr>
+        <td><strong>Hauteur Supérieure (Rien)</strong></td>
+        <td><strong>x1</strong></td>
+        <td>Aucune combinaison. La victoire dépend de la valeur unitaire brute de votre meilleure carte face au croupier.</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="game-info">
+    <h2>🔺 Plinko</h2>
+    <p class="mechanics-p">Une bille dorée est lâchée du sommet d'une pyramide de piquets, modifiant sa trajectoire de manière aléatoire vers la gauche ou vers la droite avant d'atterrir sur une case multiplicatrice.</p>
+    <ul>
+      <li><strong>Mise minimale :</strong> 10€.</li>
+    </ul>
+    <table class="multiplier-table"
+      </tr>
+    </table>
+  </div>
+
+</div>
+
+</body>
+</html>
